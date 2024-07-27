@@ -21,10 +21,13 @@ class Model: ObservableObject {
             guard let data = data, error == nil else {
                 return
             }
+            print("got data")
             do {
                 let jsonResult = try JSONDecoder().decode(APIResponse.self, from: data)
+                print(jsonResult.results.count)
                 DispatchQueue.main.async {
                     self?.results = jsonResult.results
+                    
                 }
             }
             catch {

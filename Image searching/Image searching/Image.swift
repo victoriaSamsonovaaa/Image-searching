@@ -7,15 +7,15 @@
 
 import Foundation
 
-struct APIResponse : Codable, Hashable {
+struct APIResponse : Codable {
     let results: [Result]
 }
 
-struct Result : Codable, Hashable, Identifiable {
-    let id : Int
+struct Result : Codable, Identifiable {
+    let id : String
     let urls : URLS
 }
 
-struct URLS : Codable, Hashable {
+struct URLS : Codable {
     let regular : String
 }
