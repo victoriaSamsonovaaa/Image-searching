@@ -10,8 +10,13 @@ import SwiftUI
 class Model: ObservableObject {
     
     @Published var results: [Result] = []
-    
+
     func searchImages(queryWord: String) {
+        //extra
+        DispatchQueue.main.async {
+            self.objectWillChange.send()
+            self.results.removeAll()
+        }
         let key = "ETqLuPEozPV2JsqU5y5tUfwnLd5qJBBlQEu_EsfHWrw"
         let urlQuery = "https://api.unsplash.com/search/photos?page=1&per_page=20&query=\(queryWord)&client_id=\(key)"
         guard let url = URL(string: urlQuery) else {
@@ -27,7 +32,6 @@ class Model: ObservableObject {
                 print(jsonResult.results.count)
                 DispatchQueue.main.async {
                     self?.results = jsonResult.results
-                    
                 }
             }
             catch {
@@ -37,4 +41,3 @@ class Model: ObservableObject {
         task.resume()
     }
 }
-

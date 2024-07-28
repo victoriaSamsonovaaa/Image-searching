@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SearchingView: View {
     @State var search = ""
-    @State private var model = Model()
+    @StateObject private var model = Model()
     @State var flag = false
     
     var body: some View {
@@ -32,7 +32,7 @@ struct SearchingView: View {
                                 .padding(.trailing, 10)
                                 .onTapGesture {
                                     search = ""
-                                   // self.model.results.removeAll()
+                                    self.model.results.removeAll()
                                 }
                         }
                     }
@@ -41,24 +41,14 @@ struct SearchingView: View {
                     .cornerRadius(10)
                     
                     Button("Find") {
-                        self.model.results.removeAll()
-                        model.searchImages(queryWord: search)
-                        self.flag = true
+                        self.model.searchImages(queryWord: search)
                     }
-                    
                 }
                 Spacer()
                     .frame(height: 20)
-//
-//                if self.search == "" {
-//                    Text("Enter a query to find some pictures..")
-//                        .padding(.top, UIScreen.main.bounds.size.height - 750)
-//                        .foregroundColor(.secondary)
-//                        .font(.title2)
-//                }
-//
+
                 ScrollView {
-                    LazyVGrid(columns: [GridItem(.flexible())], spacing: 16) {
+                    LazyVGrid(columns: [GridItem(.flexible())], spacing: 20) {
                         ForEach(model.results) { result in
                             if let url = URL(string: result.urls.regular) {
                                 AsyncImage(url: url) { image in
@@ -72,11 +62,11 @@ struct SearchingView: View {
                                 placeholder: {
                                     ProgressView()
                                 }
-                                
                             }
                         }
                     }
                 }
+                .id(UUID())
             }
         }
     }
