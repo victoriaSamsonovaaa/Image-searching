@@ -15,11 +15,10 @@ class Model: ObservableObject {
     func searchImages(queryWord: String) {
         //extra
         DispatchQueue.main.async {
-          //  self.objectWillChange.send()
             self.results.removeAll()
             self.noImages = false
         }
-        let key = "ETqLuPEozPV2JsqU5y5tUfwnLd5qJBBlQEu_EsfHWrw"
+        let key = ""
         let urlQuery = "https://api.unsplash.com/search/photos?page=1&per_page=20&query=\(queryWord)&client_id=\(key)"
         guard let url = URL(string: urlQuery) else {
             return
@@ -28,9 +27,7 @@ class Model: ObservableObject {
             guard let data = data, error == nil else {
                 return
             }
-            
-            print("got data")
-            do {
+                        do {
                 let jsonResult = try JSONDecoder().decode(APIResponse.self, from: data)
                 DispatchQueue.main.async {
                     if jsonResult.results.count == 0 {
