@@ -11,7 +11,9 @@ import SwiftUI
 struct SearchingView: View {
     @State var search = ""
     @StateObject private var model = Model()
-    @State var flag = false
+    @State var showAttentionalText = false
+    
+    let columns = [GridItem(.adaptive(minimum: 150), spacing: 16)]
     
     var body: some View {
         NavigationStack {
@@ -25,6 +27,9 @@ struct SearchingView: View {
                             .foregroundColor(.secondary)
                         TextField("Search", text: self.$search)
                             .font(.title3)
+                            .onChange(of: search) {
+                                self.showAttentionalText = false
+                            }
                         if self.search != "" {
                             Image(systemName: "xmark")
                                 .foregroundColor(.red)
@@ -33,6 +38,7 @@ struct SearchingView: View {
                                 .onTapGesture {
                                     search = ""
                                     self.model.results.removeAll()
+                                    self.model.noImages = false
                                 }
                         }
                     }
@@ -41,23 +47,46 @@ struct SearchingView: View {
                     .cornerRadius(10)
                     
                     Button("Find") {
-                        self.model.searchImages(queryWord: search)
+                        if search == "" {
+                            self.showAttentionalText = true
+                        }
+                        else {
+                            self.model.searchImages(queryWord: search)
+                            
+                        }
                     }
                 }
                 Spacer()
                     .frame(height: 20)
 
+                if self.model.noImages {
+                    Text("""
+                            Nothing was founded.
+                            Try one more time
+                        """)
+                        .font(.title2)
+                        .foregroundColor(.secondary)
+                        .padding(.top, UIScreen.main.bounds.size.height - 840)
+                        .multilineTextAlignment(.center)
+                }
+                
+                if self.showAttentionalText {
+                    Text("You should input a query")
+                        .font(.title2)
+                        .foregroundColor(.secondary)
+                        .padding(.top, UIScreen.main.bounds.size.height - 840)
+                        .multilineTextAlignment(.center)
+                }
+                
                 ScrollView {
-                    LazyVGrid(columns: [GridItem(.flexible())], spacing: 20) {
+                    LazyVGrid(columns: columns, spacing: 10) {
                         ForEach(model.results) { result in
                             if let url = URL(string: result.urls.regular) {
                                 AsyncImage(url: url) { image in
                                     image
                                         .resizable()
-                                        .scaledToFill()
-                                        .frame(width: UIScreen.main.bounds.size.width - 30 , height: 200)
-                                        .clipped()
-                                        .cornerRadius(20)
+                                        .aspectRatio(contentMode: .fit)
+                                        .cornerRadius(10)
                                 }
                                 placeholder: {
                                     ProgressView()
@@ -65,8 +94,8 @@ struct SearchingView: View {
                             }
                         }
                     }
+                    .padding(10)
                 }
-                .id(UUID())
             }
         }
     }
