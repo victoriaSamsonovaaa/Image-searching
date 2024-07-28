@@ -14,7 +14,8 @@
 		AF465A4D2C55014F009CCED2 /* SearchingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF465A4C2C55014F009CCED2 /* SearchingView.swift */; };
 		AF465A4F2C55031F009CCED2 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF465A4E2C55031F009CCED2 /* Image.swift */; };
 		AF465A512C55039C009CCED2 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF465A502C55039C009CCED2 /* Model.swift */; };
-		AFE99F472C56DD670071CD0B /* .env in Resources */ = {isa = PBXBuildFile; fileRef = AFE99F462C56DD670071CD0B /* .env */; };
+		AFE99F4C2C56F8D20071CD0B /* APIKeys.xcconfig in Sources */ = {isa = PBXBuildFile; fileRef = AFE99F4A2C56F1180071CD0B /* APIKeys.xcconfig */; };
+		AFE99F4D2C56F95C0071CD0B /* Image-searching-Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = AFE99F4B2C56F6720071CD0B /* Image-searching-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,7 +27,8 @@
 		AF465A4C2C55014F009CCED2 /* SearchingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchingView.swift; sourceTree = "<group>"; };
 		AF465A4E2C55031F009CCED2 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		AF465A502C55039C009CCED2 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		AFE99F462C56DD670071CD0B /* .env */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .env; path = ../../.env; sourceTree = "<group>"; };
+		AFE99F4A2C56F1180071CD0B /* APIKeys.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = APIKeys.xcconfig; sourceTree = "<group>"; };
+		AFE99F4B2C56F6720071CD0B /* Image-searching-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Image-searching-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,12 +61,13 @@
 		AF465A3D2C54FD23009CCED2 /* Image searching */ = {
 			isa = PBXGroup;
 			children = (
+				AFE99F4B2C56F6720071CD0B /* Image-searching-Info.plist */,
 				AF465A3E2C54FD23009CCED2 /* Image_searchingApp.swift */,
 				AF465A402C54FD23009CCED2 /* ContentView.swift */,
+				AFE99F492C56F0DA0071CD0B /* APIKeys */,
 				AF465A4E2C55031F009CCED2 /* Image.swift */,
 				AF465A4C2C55014F009CCED2 /* SearchingView.swift */,
 				AF465A502C55039C009CCED2 /* Model.swift */,
-				AFE99F462C56DD670071CD0B /* .env */,
 				AF465A422C54FD25009CCED2 /* Assets.xcassets */,
 				AF465A442C54FD25009CCED2 /* Preview Content */,
 			);
@@ -77,6 +80,14 @@
 				AF465A452C54FD25009CCED2 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		AFE99F492C56F0DA0071CD0B /* APIKeys */ = {
+			isa = PBXGroup;
+			children = (
+				AFE99F4A2C56F1180071CD0B /* APIKeys.xcconfig */,
+			);
+			path = APIKeys;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +148,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AFE99F472C56DD670071CD0B /* .env in Resources */,
 				AF465A462C54FD25009CCED2 /* Preview Assets.xcassets in Resources */,
 				AF465A432C54FD25009CCED2 /* Assets.xcassets in Resources */,
 			);
@@ -150,6 +160,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFE99F4D2C56F95C0071CD0B /* Image-searching-Info.plist in Sources */,
+				AFE99F4C2C56F8D20071CD0B /* APIKeys.xcconfig in Sources */,
 				AF465A512C55039C009CCED2 /* Model.swift in Sources */,
 				AF465A412C54FD23009CCED2 /* ContentView.swift in Sources */,
 				AF465A4F2C55031F009CCED2 /* Image.swift in Sources */,
@@ -282,6 +294,7 @@
 		};
 		AF465A4A2C54FD25009CCED2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AFE99F4A2C56F1180071CD0B /* APIKeys.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -290,6 +303,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Image searching/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Image-searching-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -310,6 +324,7 @@
 		};
 		AF465A4B2C54FD25009CCED2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AFE99F4A2C56F1180071CD0B /* APIKeys.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -318,6 +333,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Image searching/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Image-searching-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
