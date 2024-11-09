@@ -2,7 +2,7 @@
 
 ## Description
 
-The Image Searching App is an iOS application built with SwiftUI using Unsplash API to search images. After entering a search query, on View displays a grid of images.
+The Image Searching App is an iOS application built with SwiftUI using `Unsplash API` to search images. After entering a search query, on View displays a grid of images.
 
 Key features:
 - Search functionality with real-time results
@@ -31,14 +31,4 @@ Key features:
 7. If steps 6 || 7 aren't performed, use instructions and run it.
 8. Build and run the project on your iOS simulator or physical device.
 
-## Usage
-
-1. Launch the app on your iOS device or simulator.
-2. Enter a query word in the textField at the top of the screen. If you're not satisfied with a query you can tap on "Xmark" and this word will disappear from textField.
-3. Tap the "Find" button to initiate the search.
-4. Scroll through the grid of images that match your search query.
-
-## Authors
-
-- Victoria Samsonova
 
